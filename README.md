@@ -41,3 +41,9 @@ Para publicar no GitHub Pages, escolha **Settings → Pages → Deploy from a br
 ## Créditos dos materiais
 
 A interface e os recursos foram preparados para o projeto Missão Leitura, de Prof. Me. J. Araujo. As frases em escadinha usam o modelo dos materiais pedagógicos fornecidos para o projeto. As 24 frases adicionais foram adaptadas de *Plaquinhas de leitura*, de **@profalilianecaria**, com ajustes de pontuação e concordância. As ilustrações da interface são vetoriais.
+
+## Leitura com microfone
+
+O modo opcional grava a leitura no dispositivo e oferece reconhecimento de palavras/frases em português, com revisão obrigatória da professora antes de registrar resultados ou estrelas. O reconhecimento depende da Web Speech API e pode enviar voz ao serviço do navegador; a interface solicita autorização explícita. Só gravar usa MediaRecorder sem envio pelo jogo. Áudio é temporário até a professora optar por guardar no IndexedDB ou baixar. Sem chaves de API ou backend. Os arquivos de áudio e as transcrições dos alunos não estão neste repositório.
+
+`voice-reading.js` cuida da comparação de palavras, captura e armazenamento local; `voice-ui.js` integra a revisão, resultado e reprodução. Testes com reconhecimento e gravação simulados: `node test-voice-reading.mjs`. O teste não acessa um microfone nem um serviço externo.

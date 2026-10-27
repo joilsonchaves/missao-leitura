@@ -9,7 +9,7 @@ O link está público: https://missao-leitura-pavio-27out.joilson-prof.chatgpt.s
 3. Defina a quantidade de palavras (até 500) e o tempo. Há opções rápidas de 1, 2 e 10 minutos.
 4. Ative a repetição se quiser reutilizar palavras até completar a quantidade escolhida.
 5. Clique em Começar missão. A preparação dura 10 segundos e não entra no tempo da leitura. Essa preparação pode ser desligada.
-6. O professor ouve a leitura e marca Leu ou Precisa praticar. As setas direita/esquerda fazem o mesmo; espaço pausa. O aplicativo não reconhece a voz automaticamente.
+6. O professor ouve a leitura e marca Leu ou Precisa praticar. As setas direita/esquerda fazem o mesmo; espaço pausa. Esse é o modo manual. Para usar o microfone, veja a seção abaixo.
 7. Use Tela cheia da leitura ou Modo projeção para ampliar palavras e cronômetro.
 
 RESULTADOS
@@ -52,3 +52,13 @@ Metas, entregas de prêmios e ajustes têm um CSV separado, em Exportar conquist
 
 ARQUIVO LOCAL
 Abra Missao-Leitura.html no navegador. Não é necessário instalar o jogo. As fontes podem usar a internet; a interface tem fontes alternativas quando elas não estiverem disponíveis.
+
+MICROFONE E AVALIAÇÃO AUTOMÁTICA ASSISTIDA
+Em Como avaliar a leitura?, escolha Professora marca, Só gravar ou Avaliação automática assistida. O padrão continua manual.
+Confirme o uso do microfone e permita o acesso no navegador ao começar. O cronômetro só inicia depois que o microfone estiver pronto e a preparação terminar. Posicione a criança perto do microfone, num ambiente com poucas vozes. O jogo silencia os efeitos sonoros durante a captação.
+Só gravar: a professora marca os acertos; o áudio é captado no dispositivo, sem envio pelo jogo.
+Automática assistida: o navegador reconhece português e pode enviar a voz ao próprio serviço de reconhecimento, que pode precisar de internet. É preciso autorizar essa opção antes de cada rodada. O suporte depende do navegador; prefira testar Chrome ou Edge.
+Ao reconhecer a palavra ou a frase inteira, o jogo avança. Nos degraus de frases, espere chegar à frase completa. Se a fala não for reconhecida, a criança pode tentar de novo ou a professora usa os botões; silêncio não vira erro automaticamente. Avaliar esta fala e avançar propõe a contagem parcial para revisão.
+No final do modo automático, a professora confere os cartões e toca nas palavras para corrigir acertos e dificuldades. Apenas Confirmar resultado e estrelas registra a rodada no painel e soma as estrelas. Descartar esta rodada não registra resultado. É uma sugestão de transcrição, sem avaliação de pronúncia, diagnóstico ou substituição da observação pedagógica.
+Em Ver rodada, ouça a gravação. Use Guardar áudio neste navegador para conservar no dispositivo, ou Baixar áudio para salvar um arquivo. Sem essa escolha, o áudio é temporário e se perde ao começar outra rodada ou fechar a página. Apagar áudio preserva resultados e estrelas. Há um limite de 60 MB por gravação; se atingido, o áudio fica parcial.
+Áudios guardados usam o armazenamento deste navegador, sem sincronização e sem serem publicados no GitHub. Apagar os dados do navegador também apaga essas gravações. O CSV guarda os resultados e a modalidade de avaliação; ele não inclui os arquivos de áudio.
