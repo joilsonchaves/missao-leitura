@@ -1,0 +1,54 @@
+MISSÃO LEITURA — COMO USAR
+Criado por Prof. Me. J. Araujo.
+
+O endereço principal abre a capa de boas-vindas. Clique em Começar a missão para entrar no jogo. Para voltar à capa, clique no logotipo Missão Leitura.
+O link está público: https://missao-leitura-pavio-27out.joilson-prof.chatgpt.site
+
+1. Preencha o nome e, se desejar, a turma. Clique no animalzinho para escolher o avatar.
+2. Escolha palavras simples, complexas, mistas ou sua própria lista.
+3. Defina a quantidade de palavras (até 500) e o tempo. Há opções rápidas de 1, 2 e 10 minutos.
+4. Ative a repetição se quiser reutilizar palavras até completar a quantidade escolhida.
+5. Clique em Começar missão. A preparação dura 10 segundos e não entra no tempo da leitura. Essa preparação pode ser desligada.
+6. O professor ouve a leitura e marca Leu ou Precisa praticar. As setas direita/esquerda fazem o mesmo; espaço pausa. O aplicativo não reconhece a voz automaticamente.
+7. Use Tela cheia da leitura ou Modo projeção para ampliar palavras e cronômetro.
+
+RESULTADOS
+O jogo registra palavras avaliadas, acertos, precisão, tempo utilizado e palavras corretas por minuto. Se o aluno terminar a lista antes do limite, o tempo usado é registrado e a sobra aparece.
+O sino e os fogos comemoram uma melhora de ritmo em relação à rodada anterior concluída com a mesma lista, quantidade e limite de tempo, mantendo ou melhorando a precisão.
+No painel, ordene por Maior avanço, Mais estrelas ou Mais palavras corretas.
+
+ESTRELAS E PRÊMIOS
+As palavras corretas são acumuladas por aluno e turma até a professora reiniciar. As estrelas não zeram automaticamente quando muda a semana ou o mês.
+1ª estrela: 10 acertos; 2ª: 25; 3ª: 30; 4ª: 40; 5ª: 50; 6ª: 60; 7ª: 70; 8ª: 80; 9ª: 90; 10ª: 100.
+Cada ciclo registra uma única conquista de 10 estrelas, mesmo se uma estrela for retirada e recuperada depois. Com 10 estrelas, aparece Prêmio liberado.
+A professora pode definir o prêmio e alterar as metas. Retirar uma estrela retorna o progresso à meta anterior, sem alterar os acertos registrados nas leituras. Zerar estrelas inicia outro ciclo, preservando as metas e os prêmios anteriores.
+Premiar e recomeçar registra a entrega e inicia um ciclo zerado. Só registrar prêmio mantém as estrelas. Se zerar antes de entregar, o prêmio pendente ainda pode ser registrado no Histórico.
+O último ajuste pode ser desfeito antes de uma nova rodada. O histórico identifica os ajustes desfeitos, as datas das metas e as datas de entrega dos prêmios.
+Ao lado do aluno aparecem quantas metas de 10 estrelas completou e quantos prêmios recebeu. No Histórico, filtre por esta semana, este mês ou todos os registros. Exportar conquistas guarda um CSV desses eventos.
+Na primeira atualização, as estrelas da semana em andamento e os prêmios antigos já registrados são preservados. A partir daí, o progresso acumula por ciclo até você reiniciar.
+
+BANCOS E AVATARES
+A lista mista reúne 889 entradas, combinando as listas de palavras simples e complexas. Você também pode colar até 1.000 palavras na lista personalizada, incluindo repetições.
+Há 25 rostinhos de animais e 20 fundos: 500 combinações de avatar.
+
+FRASES EM ESCADINHA
+Acesse a aba Frases para explorar 84 frases prontas ou escrever as frases da sua turma. Clique em Jogar com frases e defina quantas frases deseja praticar. As 24 frases adicionais foram adaptadas de Plaquinhas de leitura, de @profalilianecaria, com ajustes pontuais de pontuação e concordância.
+Cada linha acrescenta uma palavra, com pontos verdes para guiar a leitura. Na última linha, toque nas palavras lidas com dificuldade: elas ficam marcadas. Depois clique em Registrar frase. Praticar frase marca todas as palavras da frase para retomar.
+A pontuação considera cada palavra da frase final uma vez. Os trechos repetidos das linhas anteriores não contam novamente. Exemplo: MARIA COME O ABACAXI tem 4 palavras; se uma delas for marcada com dificuldade, a frase registra 3 acertos de 4.
+Resultados, estrelas e velocidade usam essa contagem; o painel identifica a modalidade e a quantidade de frases. Comparações de avanço usam a mesma modalidade, lista, quantidade de palavras e limite de tempo.
+O campo Meu animalzinho, a área de leitura e o cronômetro foram ampliados. A bomba ganhou acabamento metálico, chama em camadas, faíscas e fumaça acompanhando o pavio.
+
+PAINEL POR MODALIDADE
+Em Acompanhar leitura de, selecione Palavras e frases, Somente palavras ou Somente frases.
+O painel mostra palavras corretas, frases avaliadas e frases lidas sem dificuldade. Uma frase completa é aquela sem palavras marcadas com dificuldade.
+Em Somente frases, a velocidade e o gráfico usam frases completas por minuto; em Somente palavras, usam palavras corretas por minuto. A ordem de maior avanço compara a melhora percentual em rodadas compatíveis.
+As estrelas sempre consideram os acertos de palavras das duas modalidades. O filtro do painel não altera as estrelas nem conta a mesma palavra novamente.
+O CSV exporta a modalidade selecionada e inclui frases avaliadas, frases completas e frases por minuto.
+
+GUARDAR OS DADOS
+Nomes, avatares, listas, resultados e prêmios ficam no armazenamento deste navegador e dispositivo. O link publicado e o arquivo HTML têm armazenamentos separados. Os dados não são transferidos automaticamente entre eles, nem sincronizados com Google.
+Exporte os resultados em CSV pelo Painel do professor para guardar uma cópia ou abrir no Excel/Google Planilhas. Apagar os dados do navegador também apaga os registros locais.
+Metas, entregas de prêmios e ajustes têm um CSV separado, em Exportar conquistas no mural de estrelas.
+
+ARQUIVO LOCAL
+Abra Missao-Leitura.html no navegador. Não é necessário instalar o jogo. As fontes podem usar a internet; a interface tem fontes alternativas quando elas não estiverem disponíveis.
