@@ -124,3 +124,7 @@ Ouvir vogal, Ouvir sílaba e Ouvir encontro de vogais reproduzem o conteúdo do 
 
 DADOS
 Turmas e resultados ficam neste navegador e dispositivo, separados por endereço do site. Não há conta ou sincronização automática entre computadores. Baixar lista exporta o cadastro da turma; exporte também os resultados nas áreas de acompanhamento. Não envie nomes, gravações ou resultados dos alunos ao repositório público.
+
+
+BOTÃO VOLTAR
+Use ← Voltar no alto das telas para retornar dentro do jogo. Nas cartelas, avatares, resultados e ajustes, o botão fecha a janela e retorna à tela de origem. Ao voltar durante uma missão, a leitura ou a preparação fica pausada; use Continuar quando retornar. Nos primeiros passos, a rodada continua disponível para retomar. Na revisão do microfone, Voltar preserva o resultado e o áudio temporário; Revisar leitura pendente abre a revisão novamente. Nada é confirmado nem descartado pelo botão Voltar.

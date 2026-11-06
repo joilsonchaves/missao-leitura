@@ -39,7 +39,7 @@ async function finishVoiceRound(result){
   if(result.assessment!=='manual')$('voiceStatus').textContent='Microfone encerrado. A gravação da rodada está disponível no resultado.';
   if(result.assessment==='auto'){
     pendingVoiceResult=result;result.answers.forEach(a=>a.reviewMissing=a.missedIndices||a.word.split(/\s+/).map((w,i)=>a.missedWords.includes(w)?i:-1).filter(i=>i>=0));renderVoiceReview();$('voiceReviewNotice').textContent=voiceCardText.length?'A fala do cartão que não foi concluído não entrou na contagem. Confira os cartões registrados abaixo.':'Somente os cartões avaliados aparecem na contagem. O silêncio não é marcado como erro.';
-    $('voiceReview').showModal();
+    $('voiceReview').showModal();window.GameNavigation?.reviewChanged();
   }else{lockSetup(false);commitResult(result);}
 }
 function renderVoiceReview(){
@@ -54,9 +54,9 @@ $('voiceConfirm').addEventListener('click',()=>{
   const r=pendingVoiceResult;if(!r)return;
   r.answers.forEach(a=>{const words=a.word.split(/\s+/),missing=a.reviewMissing||[];a.missedIndices=[...missing];a.missedWords=words.filter((_,i)=>missing.includes(i));a.correctCount=a.count-missing.length;a.correct=a.correctCount===a.count;delete a.reviewMissing;});
   r.correct=r.answers.reduce((sum,a)=>sum+a.correctCount,0);r.accuracy=r.attempted?Math.round(r.correct/r.attempted*100):0;r.pace=r.elapsed?Number((r.correct*60/r.elapsed).toFixed(1)):0;r.reviewedByTeacher=true;r.reviewedAt=new Date().toISOString();game.correct=r.correct;renderProgress();
-  pendingVoiceResult=null;$('voiceReview').close();lockSetup(false);$('livePace').textContent=numberText(r.pace);commitResult(r);
+  pendingVoiceResult=null;$('voiceReview').close();window.GameNavigation?.reviewChanged();lockSetup(false);$('livePace').textContent=numberText(r.pace);commitResult(r);
 });
-$('voiceDiscard').addEventListener('click',()=>{pendingVoiceResult=null;pendingVoiceBlob=null;voice.dispose();$('voiceReview').close();lockSetup(false);resetReady();toast('Rodada descartada. Nenhum resultado ou estrela foi registrado.');});
+$('voiceDiscard').addEventListener('click',()=>{pendingVoiceResult=null;pendingVoiceBlob=null;voice.dispose();$('voiceReview').close();window.GameNavigation?.reviewChanged();lockSetup(false);resetReady();toast('Rodada descartada. Nenhum resultado ou estrela foi registrado.');});
 async function showVoiceAudio(result){
   const serial=++audioViewSerial,panel=$('voiceAudio');panel.hidden=result.assessment!=='auto'&&result.assessment!=='record';panel.replaceChildren();if(panel.hidden)return;
   const title=document.createElement('strong');title.textContent=result.assessment==='auto'?'🎙 Microfone · resultado revisado pela professora':'🎙 Gravação · avaliação da professora';panel.append(title);

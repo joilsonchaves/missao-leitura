@@ -64,3 +64,8 @@ A capa mantém um único botão **Começar a missão**. No menu interno **O que 
 Os cartões têm áudio separado para vogal, sílaba ou encontro de vogais e para a palavra-exemplo. E/O oferecem também Ê/Ô. Ouvir um modelo durante a rodada é registrado como apoio. A prévia permite ouvir sem criar resultados. O texto público do cartão pode ser sintetizado por uma voz online do navegador; não usa microfone nem nomes de alunos.
 
 Testes: `node test-roster.mjs`, `node test-roster-ui.mjs`, `node test-first-steps.mjs`. Consulte `Guia-Turmas-e-Sons.txt`.
+
+
+## Voltar sem perder a atividade
+
+O botão **← Voltar** aparece nas telas e nos diálogos. A navegação fica dentro do jogo. Rodadas em andamento ficam pausadas; fechar a revisão de voz mantém resultados e áudio temporários para reabrir em **Revisar leitura pendente**. O botão não confirma nem descarta leituras. Validação: `node test-navigation.mjs`.
