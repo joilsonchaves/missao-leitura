@@ -87,3 +87,10 @@ Cada um dos 25 animais responde ao clique; a preferência pode ser desligada e o
 A preparação de dez segundos anuncia o primeiro nome com voz em português instalada e fala três, dois, um junto dos números, sem consumir tempo da leitura. Sem voz local, usa um aviso geral; o nome não é enviado a uma voz remota. A voz para ao cancelar, voltar ou começar a captação. As preferências de voz da preparação e de animais são separadas dos efeitos de conquista.
 
 `animal-sounds.js` define as imitações; `classroom-audio.js` integra seleção, gravação do pinguim e preparação. Execute `node test-classroom-audio.mjs`.
+
+
+## Escolha direta e projeção
+
+Em **Atividade ou lista**, no formulário da missão, também é possível abrir vogais, junções vocálicas, alfabeto, sílabas simples/complexas e montagem de sílabas e palavras. O nome e a turma acompanham a seleção; a professora inicia a rodada na atividade escolhida. Não cria resultados ao trocar de tela.
+
+Bomba e relógio aparecem acima da leitura. Na projeção, a faixa de tempo acompanha a rolagem, com Pausar ao lado. Ao esgotar o tempo, um efeito curto de explosão toca se Efeitos sonoros estiver ligado, depois do encerramento da captação do microfone. Cancelar, concluir antes do prazo e consultar histórico não disparam a explosão.

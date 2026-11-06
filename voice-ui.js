@@ -35,7 +35,7 @@ $('voiceEvaluate').addEventListener('click',()=>{
 });
 async function finishVoiceRound(result){
   lockSetup(true);$('stateTag').textContent=result.assessment==='auto'?'AGUARDANDO REVISÃO':'RODADA CONCLUÍDA';
-  pendingVoiceBlob=await voice.stop();$('voiceConsent').checked=false;
+  pendingVoiceBlob=await voice.stop();window.MissionTimer?.timeExpired(result);$('voiceConsent').checked=false;
   if(result.assessment!=='manual')$('voiceStatus').textContent='Microfone encerrado. A gravação da rodada está disponível no resultado.';
   if(result.assessment==='auto'){
     pendingVoiceResult=result;result.answers.forEach(a=>a.reviewMissing=a.missedIndices||a.word.split(/\s+/).map((w,i)=>a.missedWords.includes(w)?i:-1).filter(i=>i>=0));renderVoiceReview();$('voiceReviewNotice').textContent=voiceCardText.length?'A fala do cartão que não foi concluído não entrou na contagem. Confira os cartões registrados abaixo.':'Somente os cartões avaliados aparecem na contagem. O silêncio não é marcado como erro.';

@@ -144,3 +144,10 @@ Ao abrir Meu animalzinho, clique em um animal para selecionar e ouvir. O botão 
 
 CHAMADA DE PREPARAÇÃO
 Em Mais opções da missão, deixe Preparação de 10 segundos e Chamar o aluno por voz marcados. A voz diz Atenção, Adele! Vamos começar em…, e acompanha os números três, dois, um. A chamada começa alguns segundos antes dos três últimos números, para caber no tempo de preparação. O cronômetro da leitura continua inteiro. A chamada usa o primeiro nome com uma voz em português instalada; sem voz local, o aviso é geral. Voltar ou cancelar interrompe a voz. Desmarque Chamar o aluno por voz para manter somente a preparação visual e os bipes, se Efeitos sonoros estiver ligado.
+
+
+ESCOLHER PRIMEIROS PASSOS NO FORMULÁRIO
+No campo Atividade ou lista, escolha Vogais, Juntar vogais, Alfabeto ilustrado, Sílabas simples, Sílabas complexas, Formar sílabas ou Montar palavras. A atividade abre com o nome e a turma preenchidos. Ajuste os cartões e clique em Começar descobertas. Trocar a seleção não avalia nem inicia uma rodada.
+
+TEMPO VISÍVEL NA PROJEÇÃO
+A bomba e o timer ficam acima das palavras. A faixa acompanha a rolagem na projeção. Use Pausar ao lado do relógio. Se o tempo chegar a zero e Efeitos sonoros estiver ativado, toca uma explosão curta; a captação do microfone é encerrada antes do som. A mensagem de encerramento incentiva a criança a continuar.
