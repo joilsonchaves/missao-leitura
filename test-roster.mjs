@@ -1,0 +1,11 @@
+import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';
+const base=['./missao-leitura/dist/','./dist/','./'].map(p=>new URL(p,import.meta.url)).find(p=>fs.existsSync(new URL('roster.js',p)));
+const c={};vm.createContext(c);vm.runInContext(fs.readFileSync(new URL('roster.js',base),'utf8'),c);let n=0;const R=new c.ClassRoster(null,{uuid:()=>String(++n),now:()=> '2026-11-05'});
+const a=R.create('  1º ano A  ').room,b=R.create('2º ano B').room;assert(!R.create('1º ANO A').ok);assert.equal(a.name,'1º ano A');
+const added=R.add(a.id,'Ana\nJosé\n ANA\nJose');assert.equal(added.added.length,2);assert.equal(added.skipped,2);assert.equal(R.add(b.id,'Ana').added.length,1);
+const p=a.students[0];R.setAvatar(a.id,p.id,499);assert(!R.setAvatar(a.id,p.id,500));assert.equal(p.avatar,499);R.archiveStudent(a.id,p.id);assert.equal(R.activeStudents(a.id).length,1);assert.equal(R.add(a.id,'ANA').skipped,1);R.archiveStudent(a.id,p.id,false);
+R.archiveRoom(a.id);assert.equal(R.rooms().length,1);assert(!R.add(a.id,'Bia').ok);assert(!R.create('1º ano A').ok);R.archiveRoom(a.id,false);
+const loaded=new c.ClassRoster(JSON.parse(JSON.stringify(R.state)));assert.equal(loaded.room(a.id).students[0].avatar,499);assert.equal(loaded.activeStudents(a.id).length,2);
+const imported=loaded.importPeople([{name:'Ana',classroom:a.name},{name:'Bia',classroom:a.name},{name:'Caio',classroom:'3º ano'},{name:'Sem turma'}]);assert.equal(imported.rooms,1);assert.equal(imported.students,2);assert.equal(loaded.importPeople([{name:'Bia',classroom:a.name}]).students,0);
+assert(!loaded.add(a.id,'X'.repeat(61)).ok);assert.equal(loaded.state.rooms.length,3);
+console.log('OK: turmas, nomes duplicados, homônimos em turmas diferentes, avatar, arquivamento/restauração, persistência e importação sem duplicação.');

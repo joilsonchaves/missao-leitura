@@ -11,7 +11,7 @@ const banana=L.words.find(c=>c.text==='BANANA');assert(L.sameParts(banana,['BA',
 const harnessURL=['./test-voice-reading.mjs','../test-voice-reading.mjs'].map(p=>new URL(p,import.meta.url)).find(p=>fs.existsSync(p));let harness=fs.readFileSync(harnessURL,'utf8');harness=harness.slice(harness.indexOf('class Element{'),harness.indexOf('const compare=context.ReadingVoice.compare;'));
 harness=harness.replace('setAttribute(k,v){','insertAdjacentHTML(where,text){this.innerHTML+=text;}setAttribute(k,v){');
 harness=harness.replace("el('setupForm').elements=[...elements.values()];","el('setupForm').elements=[...elements.values()];el('learnSetup').elements=[...elements.values()];");
-harness=harness.replace("'app.js','voice-ui.js']","'app.js','voice-ui.js','literacy-data.js','literacy-ui.js']");
+harness=harness.replace("'app.js','voice-ui.js']","'app.js','voice-ui.js','literacy-data.js','learning-audio.js','literacy-ui.js']");
 harness=harness.replace("const run=code=>vm.runInContext(code,context),flush=async()=>{for(let i=0;i<12;i++)await Promise.resolve();};",'globalThis.testHarness={context,elements,el,run:code=>vm.runInContext(code,context)};');
 const host={fs,vm,assert,html,base,Blob,URL,Set,Map,Event,EventTarget,queueMicrotask,console};vm.createContext(host);vm.runInContext(harness,host);const {el,run}=host.testHarness;
 const click=id=>el(id).emit('click');
@@ -36,3 +36,14 @@ const cardClick=button=>el('learnCard').emit('click',{target:{closest:()=>button
 await cardClick({dataset:{learnTile:'0'}});await cardClick({dataset:{learnTile:'1'}});const beforeSound=run('soundNotes');await cardClick({dataset:{},id:'learnCheckParts'});assert.equal(run('soundNotes'),beforeSound+3);await cardClick({dataset:{},id:'learnCheckParts'});assert.equal(run('soundNotes'),beforeSound+3);
 el('learnSounds').checked=false;await el('learnSounds').emit('change');await click('learnIndependent');assert.equal(run('soundNotes'),beforeSound+3,'Muting stops additional reward sounds');await click('learnEnd');
 console.log('OK: 7 atividades, letras e exemplos, famílias, peças repetidas, registro de apoio, revisão dirigida, pausa, rodadas vazias, persistência e preservação das palavras/estrelas.');
+// Spoken models stay distinct from examples; hearing a model is recorded as help.
+run("window.spoken=[];window.speechSynthesis={cancel(){},getVoices:()=>[{lang:'pt-BR',localService:true}],speak:u=>window.spoken.push(u)};window.SpeechSynthesisUtterance=class{constructor(text){this.text=text;}};");
+await changed('learnModule','simples');el('learnFamily').value='B';await click('learnSpeak');await click('learnListen');
+assert.deepEqual(Array.from(run('spoken'),u=>u.text),['ba','bala']);assert.equal(run('LearningWorkshop.active()'),false,'Preview audio must not create student results');
+await el('learnSetup').emit('submit');await click('learnSpeak');assert(el('learnIndependent').disabled);assert(!el('learnSupported').disabled);await click('learnSupported');await click('learnEnd');
+const latest=JSON.parse(run("localStorage.getItem('missao-leitura-first-steps-v1')")).at(-1);assert.equal(latest.answers[0].supportUsed,true);
+const A=host.testHarness.context.LiteracyAudio;
+assert.equal(A.model({text:'E',spoken:'é'},'vogais'),'é');assert.equal(A.model({text:'E'},'vogais','closed'),'ê');assert.equal(A.model({text:'O'},'vogais','closed'),'ô');assert.equal(A.model({text:'BRA'},'complexas'),'bra');
+assert.equal(A.chooseVoice([{lang:'en-US',localService:true}]),null);assert.equal(A.chooseVoice([{lang:'pt-BR',localService:false}],true),null);assert.equal(A.chooseVoice([{lang:'pt-PT',localService:true},{lang:'pt-BR',localService:false}]).lang,'pt-BR');
+run("speechSynthesis.getVoices=()=>[{lang:'en-US',localService:true}];window.spoken=[];");await click('learnSpeak');assert.equal(run('spoken.length'),0);assert.match(el('learnFeedback').textContent,/português/);
+console.log('OK: áudio da vogal/sílaba e exemplo, variantes E/O, escolha de voz portuguesa, modo offline e registro de apoio.');

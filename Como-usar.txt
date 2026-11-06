@@ -86,7 +86,7 @@ Escolha se a imagem aparece desde o começo, apenas como dica ou fica escondida.
 
 Sons suaves de conquista comemora uma montagem correta ou o acerto registrado pela professora. O som toca uma vez por cartão; conferir repetidamente a mesma montagem não gera novos sons. Desmarque essa opção para praticar em silêncio. Não há buzina de erro.
 
-Ouvir palavra-exemplo usa uma voz em português instalada no dispositivo, se estiver disponível. A professora também pode modelar a leitura em voz alta. Nomes de letras e sons representados pelas letras não são a mesma coisa: contextualize com as palavras. H inicial não tem som próprio; C, G, R, S e X precisam de atenção ao contexto. As cartelas incluem notas para a professora.
+Ouvir vogal, Ouvir sílaba e Ouvir encontro de vogais reproduzem o conteúdo do cartão. Ouvir palavra-exemplo reproduz a palavra da figura separadamente: BA e BALA, por exemplo. Em E e O há também botões para Ê e Ô. No alfabeto, o botão lê o nome da letra; o som da letra depende da palavra. Você pode ouvir na prévia, sem registrar um aluno. Durante a rodada, ouvir um modelo conta como apoio adicional. O áudio usa uma voz em português disponível no navegador; algumas vozes precisam de internet. Somente voz instalada (offline) restringe a reprodução a vozes locais. Se não houver voz adequada, o jogo avisa. Não usa o microfone e não fala nomes de alunos. A professora também pode modelar a leitura em voz alta. Nomes de letras e sons representados pelas letras não são a mesma coisa: contextualize com as palavras. H inicial não tem som próprio; C, G, R, S e X precisam de atenção ao contexto. As cartelas incluem notas para a professora.
 
 VER COMO JUNTAR
 Mostra um modelo das partes, com cores e símbolos para acompanhar a ordem. A pista ou o exemplo falado é registrado como apoio adicional. A criança pode retirar peças e tentar novamente; não perde pontos por isso. Nas palavras com sílabas repetidas, como BA + NA + NA, cada peça pode ser usada uma vez.
@@ -105,3 +105,22 @@ As descobertas têm acompanhamento próprio. Ler vogais, sílabas e repetir trec
 
 DADOS
 Tudo fica neste navegador e dispositivo. O CSV dos primeiros passos é separado do CSV de leitura. Não há sincronização automática entre endereços ou computadores. Guarde uma cópia dos resultados.
+
+
+MISSÃO LEITURA — MINHAS TURMAS E SONS
+Prof. Me. J. Araujo.
+
+ENTRAR E ESCOLHER
+Na capa, use Começar a missão. Dentro do jogo, escolha a atividade no menu O que vamos fazer?: palavras, frases, vogais, encontros de vogais, alfabeto, sílabas simples/complexas, formar sílabas ou montar palavras.
+
+MONTAR A TURMA AOS POUCOS
+Preencha nome e turma antes de começar uma atividade. Ao iniciar, o aluno entra automaticamente em Minhas turmas. Na próxima vez, basta escolher a turma e o aluno nas listas. Você pode digitar um novo nome sem cadastrar a sala toda antes. Use nome e sobrenome para distinguir alunos. O mesmo nome na mesma turma não é repetido.
+
+ORGANIZAR
+Em Minhas turmas, crie uma turma e adicione nomes, um por linha. Aproveitar alunos do histórico cadastra nomes com turma já informada, sem criar leituras ou estrelas. Cada aluno tem atalhos para leitura e primeiros passos e pode escolher seu animalzinho. Arquivar turma ou cadastro é reversível e preserva resultados e conquistas. Para recuperar, marque Ver arquivadas ou Ver alunos arquivados. Baixar lista exporta o cadastro em CSV.
+
+OUVIR E PRATICAR
+Ouvir vogal, Ouvir sílaba e Ouvir encontro de vogais reproduzem o conteúdo do cartão. Ouvir palavra-exemplo reproduz a palavra da figura separadamente: BA e BALA, por exemplo. Em E e O há também botões para Ê e Ô. No alfabeto, o botão lê o nome da letra; o som da letra depende da palavra. Você pode ouvir na prévia, sem registrar um aluno. Durante a rodada, ouvir um modelo conta como apoio adicional. O áudio usa uma voz em português disponível no navegador; algumas vozes precisam de internet. Somente voz instalada (offline) restringe a reprodução a vozes locais. Se não houver voz adequada, o jogo avisa. Não usa o microfone e não fala nomes de alunos.
+
+DADOS
+Turmas e resultados ficam neste navegador e dispositivo, separados por endereço do site. Não há conta ou sincronização automática entre computadores. Baixar lista exporta o cadastro da turma; exporte também os resultados nas áreas de acompanhamento. Não envie nomes, gravações ou resultados dos alunos ao repositório público.

@@ -11,7 +11,7 @@ Jogo de fluência leitora para a sala de aula, com palavras e frases em escadinh
 
 ## Usar na sala
 
-Abra o jogo, preencha o nome e a turma, escolha o animalzinho e configure a leitura. O professor ouve o aluno e marca os acertos ou as palavras com dificuldade. O aplicativo não reconhece a voz automaticamente.
+Abra o jogo, preencha o nome e a turma, escolha o animalzinho e configure a leitura. O professor ouve o aluno e marca os acertos ou as palavras com dificuldade. Há também gravação opcional e avaliação automática assistida, sempre com revisão da professora.
 
 Há palavras simples, complexas e mistas, 84 frases prontas e listas personalizáveis. O modo de projeção amplia o texto. A preparação de 10 segundos, os sons e as cores das palavras podem ser ligados ou desligados.
 
@@ -52,6 +52,15 @@ O modo opcional grava a leitura no dispositivo e oferece reconhecimento de palav
 
 A nova área em `#aprender` oferece vogais com/sem imagem, encontros de vogais, alfabeto ilustrado, sílabas simples/complexas, formação de sílabas e montagem de palavras. Há sete atividades, cartelas ampliadas, letras maiúsculas/minúsculas, pistas graduais, modo tranquilo, rodadas sem cronômetro e sons suaves opcionais.
 
-A professora registra sozinho, com apoio ou para retomar. O histórico tem filtros, revisão dirigida e CSV próprio. Essas atividades não aumentam palavras por minuto nem estrelas das missões de leitura. Os sons de conquista são gerados no dispositivo; ouvir exemplos usa uma voz em português instalada, quando disponível.
+A professora registra sozinho, com apoio ou para retomar. O histórico tem filtros, revisão dirigida e CSV próprio. Essas atividades não aumentam palavras por minuto nem estrelas das missões de leitura. Os sons de conquista são gerados no dispositivo; ouvir vogais, sílabas e exemplos usa uma voz em português do navegador, quando disponível. A opção offline permite apenas vozes locais; outras vozes podem precisar de internet.
 
 Os arquivos `literacy-data.js`, `literacy-ui.js` e `literacy.css` cuidam das atividades. Execute `node test-first-steps.mjs` para validar o conteúdo, as peças repetidas, apoios, registros e sons. `Guia-Primeiros-Passos.txt` explica o uso na sala de aula. As imagens de referência fornecidas pela professora orientaram a proposta; as cartelas digitais foram implementadas em HTML, sem republicar as fichas.
+
+
+## Turmas e áudio de apoio
+
+A capa mantém um único botão **Começar a missão**. No menu interno **O que vamos fazer?**, escolha a atividade. Preencher nome e turma ao começar cadastra o aluno automaticamente. **Minhas turmas** permite criar listas, selecionar alunos, escolher avatares e arquivar/restaurar cadastros. Tudo fica no navegador; nenhum cadastro de aluno faz parte deste repositório.
+
+Os cartões têm áudio separado para vogal, sílaba ou encontro de vogais e para a palavra-exemplo. E/O oferecem também Ê/Ô. Ouvir um modelo durante a rodada é registrado como apoio. A prévia permite ouvir sem criar resultados. O texto público do cartão pode ser sintetizado por uma voz online do navegador; não usa microfone nem nomes de alunos.
+
+Testes: `node test-roster.mjs`, `node test-roster-ui.mjs`, `node test-first-steps.mjs`. Consulte `Guia-Turmas-e-Sons.txt`.
