@@ -28,7 +28,28 @@ const calls={
  deer:{parts:[p(0,.45,260,200,'triangle',19,8),p(.5,.34,300,180,'triangle',21,5)]},
  sheep:{parts:[p(0,.65,240,170,'triangle',23,8),p(.68,.24,190,145,'triangle',20,5)]}
 };
+// Render small PCM clips so every avatar uses the same player as the recording.
+// These are playful effects, not recordings of the animals.
+const effects=new Map();
+function effectSource(type){
+ if(effects.has(type))return effects.get(type);
+ const call=calls[type]||{parts:[p(0,.2,520,780),p(.25,.25,780,1040)]},rate=22050;
+ const duration=Math.max(...call.parts.map(part=>part.at+part.duration))+.08;
+ const samples=new Float32Array(Math.ceil(duration*rate));
+ for(const part of call.parts){let phase=0;const count=Math.floor(part.duration*rate),start=Math.floor(part.at*rate);
+  for(let i=0;i<count;i++){const t=i/rate,f=part.from*Math.pow(part.to/part.from,t/part.duration),vibrato=part.vibrato?1+.025*Math.sin(2*Math.PI*part.vibrato*t):1;phase+=2*Math.PI*Math.max(180,f)*vibrato/rate;
+   const wave=part.wave==='sawtooth'?.65*Math.sin(phase)+.25*Math.sin(2*phase)+.1*Math.sin(3*phase):part.wave==='triangle'?.9*Math.sin(phase)+.1*Math.sin(3*phase):Math.sin(phase);
+   const attack=Math.min(1,t/.018),release=Math.min(1,(part.duration-t)/.045);samples[start+i]+=wave*attack*release;
+  }
+ }
+ const peak=Math.max(.01,...samples.map(Math.abs)),buffer=new ArrayBuffer(44+samples.length*2),view=new DataView(buffer);
+ const label=(at,value)=>{for(let i=0;i<value.length;i++)view.setUint8(at+i,value.charCodeAt(i));};
+ label(0,'RIFF');view.setUint32(4,buffer.byteLength-8,true);label(8,'WAVE');label(12,'fmt ');view.setUint32(16,16,true);view.setUint16(20,1,true);view.setUint16(22,1,true);view.setUint32(24,rate,true);view.setUint32(28,rate*2,true);view.setUint16(32,2,true);view.setUint16(34,16,true);label(36,'data');view.setUint32(40,samples.length*2,true);
+ for(let i=0;i<samples.length;i++)view.setInt16(44+i*2,Math.round(samples[i]/peak*.48*32767),true);
+ let binary='';for(const byte of new Uint8Array(buffer))binary+=String.fromCharCode(byte);
+ const source='data:audio/wav;base64,'+root.btoa(binary);effects.set(type,source);return source;
+}
 function firstName(name){return String(name||'').trim().match(/[\p{L}\p{M}]+(?:[-'][\p{L}\p{M}]+)*/u)?.[0].slice(0,30)||'';}
 function intro(name,localVoice){const who=localVoice?firstName(name):'';return who?'Atenção, '+who+'! Vamos começar em…':'Atenção! Vamos começar em…';}
-root.AnimalCalls={calls,firstName,intro};
+root.AnimalCalls={calls,effectSource,firstName,intro};
 })(typeof window==='undefined'?globalThis:window);
