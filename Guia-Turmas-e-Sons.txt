@@ -28,3 +28,10 @@ Ao registrar uma nova rodada com cartões avaliados, aparece o animalzinho do al
 
 VOZ DA LEITURA
 Em Primeiros passos, abra Voz, sons e acessibilidade. Escolha a Voz da leitura e clique em Experimentar esta voz antes de começar. O modo recomendado prioriza vozes em português do Brasil identificadas pelo navegador como naturais; você pode escolher outra. Ritmo Natural evita a lentidão excessiva; Mais devagar dá mais tempo para acompanhar. Somente voz instalada (offline) exclui vozes remotas. A disponibilidade e a pronúncia dependem do navegador e do dispositivo. Não há geração de voz humana nem avaliação clínica da fala. Somente o texto público da atividade é falado; nomes e gravações de alunos não são enviados para sintetizar exemplos.
+
+
+ANIMAIS COM SOM
+Ao abrir Meu animalzinho, clique em um animal para selecionar e ouvir. O botão Ouvir novamente repete o som sem trocar de avatar. Ouvir os animais desliga o áudio; as escolhas de animal e de cor continuam funcionando. Trocar somente a cor fica em silêncio. Cada novo clique interrompe o som anterior. Há imitações lúdicas para os animais e uma pequena gravação CC0 para o pinguim. Os sons não são reproduzidos durante uma rodada com microfone.
+
+CHAMADA DE PREPARAÇÃO
+Em Mais opções da missão, deixe Preparação de 10 segundos e Chamar o aluno por voz marcados. A voz diz Atenção, Adele! Vamos começar em…, e acompanha os números três, dois, um. A chamada começa alguns segundos antes dos três últimos números, para caber no tempo de preparação. O cronômetro da leitura continua inteiro. A chamada usa o primeiro nome com uma voz em português instalada; sem voz local, o aviso é geral. Voltar ou cancelar interrompe a voz. Desmarque Chamar o aluno por voz para manter somente a preparação visual e os bipes, se Efeitos sonoros estiver ligado.

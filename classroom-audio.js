@@ -1,0 +1,29 @@
+/* Short avatar feedback and a spoken countdown, separate from scoring and recording. */
+(function(){
+'use strict';
+const saved=readStore('missao-leitura-classroom-audio-v1',{}),prefs={animals:saved?.animals!==false,preparation:saved?.preparation!==false};
+let context=null,nodes=[],sample=null,soundSerial=0,finishTimer=null;
+function persist(){saveStore('missao-leitura-classroom-audio-v1',prefs);}
+function audioContext(){try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;if(!context||context.state==='closed')context=new C();if(context.state==='suspended')context.resume().catch(()=>{});return context;}catch{return null;}}
+function stopAnimal(){soundSerial++;clearTimeout(finishTimer);if(sample){sample.pause();sample.src='';sample=null;}for(const n of nodes){try{n.stop?.();n.disconnect?.();}catch{}}nodes=[];$('avatarPreview').classList.remove('avatar-speaking');$('avatarPreview').setAttribute('aria-busy','false');}
+function pulse(ctx,part){const o=ctx.createOscillator(),g=ctx.createGain(),filter=ctx.createBiquadFilter(),at=ctx.currentTime+part.at;o.type=part.wave;o.frequency.setValueAtTime(part.from,at);o.frequency.exponentialRampToValueAtTime(part.to,at+part.duration);filter.type='lowpass';filter.frequency.value=Math.min(2600,Math.max(600,part.from*3));filter.Q.value=.6;g.gain.setValueAtTime(0,at);g.gain.linearRampToValueAtTime(.038,at+.025);g.gain.exponentialRampToValueAtTime(.001,at+part.duration);o.connect(filter);filter.connect(g);g.connect(ctx.destination);nodes.push(o,g,filter);if(part.vibrato||part.rough){const mod=ctx.createOscillator(),depth=ctx.createGain();mod.frequency.value=part.vibrato||35;depth.gain.value=part.rough||part.from*.035;mod.connect(depth);depth.connect(o.frequency);nodes.push(mod,depth);mod.start(at);mod.stop(at+part.duration+.03);}o.start(at);o.stop(at+part.duration+.03);}
+function imitate(call,name,token){const ctx=audioContext();if(!ctx){$('avatarSoundStatus').textContent='Este navegador não conseguiu reproduzir o som.';return;}call.parts.forEach(part=>pulse(ctx,part));$('avatarSoundStatus').textContent='Imitação lúdica: '+name+'.';finishTimer=setTimeout(()=>{if(token===soundSerial)stopAnimal();},Math.max(...call.parts.map(p=>p.at+p.duration))*1000+100);}
+function play(type,name){stopAnimal();if(!prefs.animals){$('avatarSoundStatus').textContent='Sons dos animais desligados.';return;}if(microphoneStarting||game&&game.assessment!=='manual'&&game.status!=='finished'){$('avatarSoundStatus').textContent='O som do animal fica desligado durante a leitura com microfone.';return;}const call=AnimalCalls.calls[type];if(!call)return;const token=soundSerial;$('avatarPreview').classList.add('avatar-speaking');$('avatarPreview').setAttribute('aria-busy','true');if(call.file&&typeof Audio!=='undefined'){
+  const player=sample=new Audio(call.file);player.volume=.45;player.preload='none';$('avatarSoundStatus').textContent='Som do pinguim: gravação de áudio.';let fallbackUsed=false;const fallback=()=>{if(fallbackUsed||token!==soundSerial)return;fallbackUsed=true;clearTimeout(finishTimer);player.pause();sample=null;imitate(call,name,token);};player.onended=()=>{if(token===soundSerial)stopAnimal();};player.onerror=fallback;const pending=player.play();pending?.catch(fallback);finishTimer=setTimeout(()=>{if(token===soundSerial)stopAnimal();},3000);
+ }else imitate(call,name,token);}
+$('avatarSoundEnabled').checked=prefs.animals;$('avatarSoundEnabled').addEventListener('change',()=>{prefs.animals=$('avatarSoundEnabled').checked;persist();if(!prefs.animals)stopAnimal();$('avatarSoundStatus').textContent=prefs.animals?'Toque em um animal para ouvir.':'Sons dos animais desligados.';});
+$('avatarReplay').addEventListener('click',()=>{const [name,,type]=animalKinds[Math.floor(pendingAvatar/20)];play(type,name);});$('avatarDialog').addEventListener('close',stopAnimal);
+window.AvatarSounds={play,stop:stopAnimal};
+
+const synth=window.speechSynthesis;let preparation=null,ownsSpeech=false,speechSerial=0;
+function stopSpeech(reset=true){speechSerial++;if(ownsSpeech){try{synth?.cancel();}catch{}}ownsSpeech=false;if(reset)preparation=null;}
+function voiceChoice(){const voices=synth?.getVoices()||[],local=LiteracyAudio.chooseVoice(voices,true,readStore('missao-leitura-narrator-v1',{})?.voice||'');return {voice:local||LiteracyAudio.chooseVoice(voices),local:!!local};}
+function say(text,voice){if(!synth||!voice)return false;stopSpeech(false);const token=speechSerial,utterance=new SpeechSynthesisUtterance(text);utterance.voice=voice;utterance.lang=voice.lang;utterance.rate=1.03;utterance.pitch=1;utterance.volume=.9;ownsSpeech=true;utterance.onend=utterance.onerror=()=>{if(token===speechSerial)ownsSpeech=false;};try{synth.speak(utterance);return true;}catch{ownsSpeech=false;return false;}}
+function begin(round){stopAnimal();stopSpeech();try{synth?.cancel();}catch{}if(!$('preparation').checked||!prefs.preparation)return;preparation={id:round.id,introduced:false,numbers:new Set()};synth?.getVoices();}
+function tick(round,remaining){if(!preparation||preparation.id!==round.id||!prefs.preparation)return false;const chosen=voiceChoice();if(!chosen.voice)return false;
+  if(remaining<=7&&remaining>3&&!preparation.introduced){preparation.introduced=true;const text=AnimalCalls.intro(round.name,chosen.local);$('encouragement').textContent=text;say(text,chosen.voice);}
+  if(remaining<=3&&remaining>=1){if(!preparation.numbers.has(remaining)){preparation.numbers.add(remaining);if(!say(['','Um','Dois','Três'][remaining],chosen.voice))return false;}return true;}return false;
+}
+$('preparationVoice').checked=prefs.preparation;$('preparationVoice').addEventListener('change',()=>{prefs.preparation=$('preparationVoice').checked;persist();if(!prefs.preparation)stopSpeech();});
+window.PreparationSpeech={begin,tick,stop:()=>stopSpeech(),pause:()=>stopSpeech(false)};
+})();

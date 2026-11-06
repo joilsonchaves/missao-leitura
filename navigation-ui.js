@@ -11,9 +11,7 @@ async function goBack(){
   if(document.fullscreenElement){try{await document.exitFullscreen();}catch{toast('Use Esc para sair da tela cheia.');return;}document.body.classList.remove('projection');$('projector').textContent='↗ Modo projeção';return;}
   if(document.body.classList.contains('projection')){document.body.classList.remove('projection');$('projector').textContent='↗ Modo projeção';return;}
   if(game?.status==='running')await togglePause();
-  else if(game?.status==='preparing'){
-    game.preparationRemaining=Math.max(0,game.readyAt-performance.now());game.status='preparation-paused';$('word').textContent='PAUSA';$('stateTag').textContent='PREPARAÇÃO PAUSADA';$('pause').disabled=false;$('pause').textContent='▶ Continuar preparação';
-  }
+  else if(game?.status==='preparing'){pausePreparation();}
   const previous=trail.back();restoring=true;
   try{navigate(previous.tab);if(previous.tab==='aprender')window.LearningWorkshop.restoreView(previous.view||'practice');}finally{restoring=false;}
 }

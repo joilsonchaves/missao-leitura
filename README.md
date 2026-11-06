@@ -78,3 +78,12 @@ O design concentra a cor nas letras, na trilha de atividades e nas conquistas. O
 Em **Voz, sons e acessibilidade**, escolha e teste uma voz em português. A recomendada prioriza vozes pt-BR identificadas como naturais. A opção offline filtra vozes locais; disponibilidade e pronúncia dependem do navegador. Somente os exemplos públicos são sintetizados.
 
 `adventure.css`, `celebration.css` e `adventure-ui.js` implementam a apresentação e as preferências. Execute `node test-adventure.mjs` para validar vozes, áudio opcional, troféu, estrelas reais, modo tranquilo e ausência de mudanças no histórico.
+
+
+## Sons na escolha do avatar e chamada do aluno
+
+Cada um dos 25 animais responde ao clique; a preferência pode ser desligada e o som pode ser repetido. As cores não disparam som. O pinguim tem uma gravação CC0; os demais usam imitações lúdicas locais. Consulte `AUDIO-CREDITS.md`.
+
+A preparação de dez segundos anuncia o primeiro nome com voz em português instalada e fala três, dois, um junto dos números, sem consumir tempo da leitura. Sem voz local, usa um aviso geral; o nome não é enviado a uma voz remota. A voz para ao cancelar, voltar ou começar a captação. As preferências de voz da preparação e de animais são separadas dos efeitos de conquista.
+
+`animal-sounds.js` define as imitações; `classroom-audio.js` integra seleção, gravação do pinguim e preparação. Execute `node test-classroom-audio.mjs`.
