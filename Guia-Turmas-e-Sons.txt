@@ -19,3 +19,12 @@ Turmas e resultados ficam neste navegador e dispositivo, separados por endereço
 
 BOTÃO VOLTAR
 Use ← Voltar no alto das telas para retornar dentro do jogo. Nas cartelas, avatares, resultados e ajustes, o botão fecha a janela e retorna à tela de origem. Ao voltar durante uma missão, a leitura ou a preparação fica pausada; use Continuar quando retornar. Nos primeiros passos, a rodada continua disponível para retomar. Na revisão do microfone, Voltar preserva o resultado e o áudio temporário; Revisar leitura pendente abre a revisão novamente. Nada é confirmado nem descartado pelo botão Voltar.
+
+
+DESIGN E COMEMORAÇÕES
+A capa tem uma única entrada: Começar a missão. Dentro do jogo, escolha a atividade. A Área da professora reúne turmas, painel e bancos. Os ajustes adicionais ficam recolhidos: clique na meta para mudar tempo/quantidade e em Mais opções da missão para som, repetição, preparação e microfone. Nos Primeiros passos, Ajustar a atividade reúne imagens, embaralhamento e retomada. A configuração sai de cena ao começar, para dar foco à leitura. Voltar preserva a rodada e permite retomar.
+
+Ao registrar uma nova rodada com cartões avaliados, aparece o animalzinho do aluno com troféu e uma comemoração curta. Nas missões, a quantidade de novas estrelas é a que foi realmente conquistada; os primeiros passos mantêm sua contagem própria. Abrir resultados antigos não repete a comemoração. Os sons respeitam Efeitos sonoros ou Sons suaves de conquista. Troféu e estrelas na tela permite desligar a cena. Modo tranquilo e a preferência do dispositivo por reduzir movimento deixam a cena estática. A leitura com microfone é revisada antes da comemoração e do registro.
+
+VOZ DA LEITURA
+Em Primeiros passos, abra Voz, sons e acessibilidade. Escolha a Voz da leitura e clique em Experimentar esta voz antes de começar. O modo recomendado prioriza vozes em português do Brasil identificadas pelo navegador como naturais; você pode escolher outra. Ritmo Natural evita a lentidão excessiva; Mais devagar dá mais tempo para acompanhar. Somente voz instalada (offline) exclui vozes remotas. A disponibilidade e a pronúncia dependem do navegador e do dispositivo. Não há geração de voz humana nem avaliação clínica da fala. Somente o texto público da atividade é falado; nomes e gravações de alunos não são enviados para sintetizar exemplos.

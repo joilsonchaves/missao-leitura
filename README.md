@@ -69,3 +69,12 @@ Testes: `node test-roster.mjs`, `node test-roster-ui.mjs`, `node test-first-step
 ## Voltar sem perder a atividade
 
 O botão **← Voltar** aparece nas telas e nos diálogos. A navegação fica dentro do jogo. Rodadas em andamento ficam pausadas; fechar a revisão de voz mantém resultados e áudio temporários para reabrir em **Revisar leitura pendente**. O botão não confirma nem descarta leituras. Validação: `node test-navigation.mjs`.
+
+
+## Aventura de aprendizagem
+
+O design concentra a cor nas letras, na trilha de atividades e nas conquistas. Os ajustes ficam em grupos recolhidos, e a rodada mostra a leitura com foco. A Área da professora reúne cadastros e acompanhamento. O avatar comemora com troféu e efeitos curtos; a contagem de estrelas vem das regras existentes. Preferências de sons, comemorações e redução de movimento são respeitadas. Resultados antigos não disparam festas.
+
+Em **Voz, sons e acessibilidade**, escolha e teste uma voz em português. A recomendada prioriza vozes pt-BR identificadas como naturais. A opção offline filtra vozes locais; disponibilidade e pronúncia dependem do navegador. Somente os exemplos públicos são sintetizados.
+
+`adventure.css`, `celebration.css` e `adventure-ui.js` implementam a apresentação e as preferências. Execute `node test-adventure.mjs` para validar vozes, áudio opcional, troféu, estrelas reais, modo tranquilo e ausência de mudanças no histórico.

@@ -1,0 +1,34 @@
+/* Presentation preferences stay separate from reading results and reward accounting. */
+(function(){
+'use strict';
+let narrator=readStore('missao-leitura-narrator-v1',{voice:'',pace:'natural'}),party=readStore('missao-leitura-celebrations-v1',{enabled:true});
+if(!narrator||typeof narrator!=='object')narrator={voice:'',pace:'natural'};if(!party||typeof party!=='object')party={enabled:true};
+const synth=window.speechSynthesis,voiceKey=v=>v.voiceURI||v.name||'',spokenVoices=()=>synth?.getVoices()||[];
+function refreshVoices(){const all=spokenVoices(),voices=LiteracyAudio.voices(all,$('learnOfflineVoice').checked),select=$('learnNarrator');select.innerHTML='<option value="">Recomendada para este navegador</option>'+voices.map(v=>`<option value="${escapeHtml(voiceKey(v))}">${escapeHtml(v.name||v.lang)}${v.localService?' · instalada':''}</option>`).join('');select.value=voices.some(v=>voiceKey(v)===narrator.voice)?narrator.voice:'';select.disabled=!voices.length;$('testNarrator').disabled=!synth;$('narratorNotice').textContent=!synth?'Este navegador não oferece leitura em voz alta.':!voices.length?'Nenhuma voz em português disponível nesta opção. Você pode testar outra voz do navegador.':'Escolha a voz que soa melhor para a sua turma. Algumas vozes precisam de internet.';}
+function choose(voices=spokenVoices()){return LiteracyAudio.chooseVoice(voices,$('learnOfflineVoice').checked,narrator.voice);}
+function cancelVoice(){synth?.cancel();}
+function saveNarrator(){narrator={voice:$('learnNarrator').value,pace:$('learnVoicePace').value};saveStore('missao-leitura-narrator-v1',narrator);cancelVoice();}
+$('learnVoicePace').value=narrator.pace==='slow'?'slow':'natural';$('learnNarrator').addEventListener('change',saveNarrator);$('learnVoicePace').addEventListener('change',saveNarrator);$('learnOfflineVoice').addEventListener('change',()=>{cancelVoice();refreshVoices();});synth?.addEventListener?.('voiceschanged',refreshVoices);
+$('testNarrator').addEventListener('click',async()=>{if(window.LearningWorkshop?.active()||game&&game.status!=='finished'||microphoneStarting||pendingVoiceResult){toast('Teste a voz antes de começar a atividade.');return;}cancelVoice();if(!spokenVoices().length)await new Promise(resolve=>setTimeout(resolve,900));refreshVoices();const voice=choose();if(!voice){toast('Escolha uma voz em português disponível no navegador.');return;}const u=new SpeechSynthesisUtterance('Olá! Vamos ler juntos? Cada descoberta é uma conquista.');u.voice=voice;u.lang=voice.lang;u.rate=narrator.pace==='slow'?.86:1;u.pitch=1;u.onerror=e=>{if(!['interrupted','canceled'].includes(e.error))toast('Esta voz não foi reproduzida. Escolha outra e teste novamente.');};synth.speak(u);});
+$('missionStageBack').addEventListener('click',()=>window.GameNavigation.goBack());
+window.AdventureView={focusReading:()=>requestAnimationFrame(()=>document.querySelector('#jogar .play-card')?.scrollIntoView?.({block:'start',behavior:'instant'})),focusLearning:()=>requestAnimationFrame(()=>$('learnStage').scrollIntoView?.({block:'start',behavior:'instant'})),syncGoal:()=>{const phrases=$('readingMode').value==='frases';$('missionCompactGoal').textContent=$('target').value+' '+(phrases?'frases':'palavras')+' em '+durationLabel(duration());}};window.AdventureView.syncGoal();
+window.LearningNarrator={choose,rate:kind=>narrator.pace==='slow'?(kind==='example'?.85:.76):(kind==='example'?.98:.88)};refreshVoices();
+
+let celebrationAudio=null,closeTimer=null,nodes=[];const celebrated=new Set();
+function prepare(){try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;if(!celebrationAudio||celebrationAudio.state==='closed')celebrationAudio=new C();if(celebrationAudio.state==='suspended')celebrationAudio.resume().catch(()=>{});}catch{}}
+function stopNotes(){for(const n of nodes){try{n.stop();n.disconnect();}catch{}}nodes=[];}
+function fanfare(quiet){prepare();if(!celebrationAudio)return;stopNotes();try{const start=celebrationAudio.currentTime+.12;[523.25,659.25,783.99,1046.5].forEach((hz,i)=>{const o=celebrationAudio.createOscillator(),g=celebrationAudio.createGain(),at=start+i*.14;o.type='sine';o.frequency.value=hz;g.gain.setValueAtTime(0,at);g.gain.linearRampToValueAtTime(quiet?.025:.045,at+.012);g.gain.exponentialRampToValueAtTime(.001,at+.45);o.connect(g);g.connect(celebrationAudio.destination);nodes.push(o);o.start(at);o.stop(at+.48);});}catch{}}
+function closeCelebration(){clearTimeout(closeTimer);closeTimer=null;stopNotes();if($('celebrationDialog').open)$('celebrationDialog').close();}
+function show({record,kind='reading',stars=0,improved=false,sound=false,calm=false,cards=0}){
+  const key=kind+':'+record.id;if(celebrated.has(key))return;celebrated.add(key);if(sound)fanfare(calm);if(party.enabled===false)return;
+  const count=Math.max(0,Math.min(10,Math.floor(Number(stars)||0))),still=calm||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  $('celebrationDialog').classList.toggle('party-still',!!still);$('celebrationAvatar').innerHTML=avatarFor(record);$('celebrationTitle').textContent=count?count+(count===1?' nova estrela!':' novas estrelas!'):improved?'Você avançou na leitura!':kind==='early'?'Mais uma descoberta!':'Muito bem, leitor!';
+  $('celebrationMessage').textContent=count?'As novas estrelas já estão no seu mural.':improved?'Você leu mais rápido em uma rodada comparável, mantendo ou melhorando a precisão.':kind==='early'?cards+' '+(cards===1?'cartão praticado.':'cartões praticados.')+' Cada tentativa ajuda você a aprender.':'Mais uma rodada de leitura concluída. Seu resultado está logo a seguir.';
+  $('celebrationStars').textContent=count?'★'.repeat(count):'';$('celebrationBurst').innerHTML=still?'':Array.from({length:18},(_,i)=>`<span aria-hidden="true" style="--dx:${Math.round(Math.cos(i*2.399)*(165+i%4*35))}px;--dy:${Math.round(Math.sin(i*2.399)*(145+i%3*32))}px;--turn:${i*43}deg;--delay:${i%4*.04}s;--color:${['#FFC857','#36D4AD','#AA8AEF','#FF9C7A'][i%4]}">${i%3?'✦':'★'}</span>`).join('');
+  if(!$('celebrationDialog').open)$('celebrationDialog').showModal();clearTimeout(closeTimer);closeTimer=setTimeout(closeCelebration,still?3300:4400);
+}
+for(const id of ['partyEnabled','learnPartyEnabled']){$(id).checked=party.enabled!==false;$(id).addEventListener('change',()=>{party={enabled:$(id).checked};saveStore('missao-leitura-celebrations-v1',party);$('partyEnabled').checked=$('learnPartyEnabled').checked=party.enabled;});}
+$('celebrationDialog').addEventListener('close',()=>{clearTimeout(closeTimer);stopNotes();$('celebrationBurst').innerHTML='';if($('learnResultDialog').open)$('learnCloseResult').focus();else if($('resultDialog').open)$('closeResult').focus();});
+window.Celebrations={prepare,show,close:closeCelebration};
+document.addEventListener('click',event=>{if(event.target.closest('.teacher-menu [data-tab]'))document.querySelector('.teacher-navigation').open=false;});
+})();
