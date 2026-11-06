@@ -47,3 +47,11 @@ A interface e os recursos foram preparados para o projeto Missão Leitura, de Pr
 O modo opcional grava a leitura no dispositivo e oferece reconhecimento de palavras/frases em português, com revisão obrigatória da professora antes de registrar resultados ou estrelas. O reconhecimento depende da Web Speech API e pode enviar voz ao serviço do navegador; a interface solicita autorização explícita. Só gravar usa MediaRecorder sem envio pelo jogo. Áudio é temporário até a professora optar por guardar no IndexedDB ou baixar. Sem chaves de API ou backend. Os arquivos de áudio e as transcrições dos alunos não estão neste repositório.
 
 `voice-reading.js` cuida da comparação de palavras, captura e armazenamento local; `voice-ui.js` integra a revisão, resultado e reprodução. Testes com reconhecimento e gravação simulados: `node test-voice-reading.mjs`. O teste não acessa um microfone nem um serviço externo.
+
+## Primeiros passos
+
+A nova área em `#aprender` oferece vogais com/sem imagem, encontros de vogais, alfabeto ilustrado, sílabas simples/complexas, formação de sílabas e montagem de palavras. Há sete atividades, cartelas ampliadas, letras maiúsculas/minúsculas, pistas graduais, modo tranquilo, rodadas sem cronômetro e sons suaves opcionais.
+
+A professora registra sozinho, com apoio ou para retomar. O histórico tem filtros, revisão dirigida e CSV próprio. Essas atividades não aumentam palavras por minuto nem estrelas das missões de leitura. Os sons de conquista são gerados no dispositivo; ouvir exemplos usa uma voz em português instalada, quando disponível.
+
+Os arquivos `literacy-data.js`, `literacy-ui.js` e `literacy.css` cuidam das atividades. Execute `node test-first-steps.mjs` para validar o conteúdo, as peças repetidas, apoios, registros e sons. `Guia-Primeiros-Passos.txt` explica o uso na sala de aula. As imagens de referência fornecidas pela professora orientaram a proposta; as cartelas digitais foram implementadas em HTML, sem republicar as fichas.

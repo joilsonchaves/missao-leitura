@@ -62,3 +62,46 @@ Ao reconhecer a palavra ou a frase inteira, o jogo avança. Nos degraus de frase
 No final do modo automático, a professora confere os cartões e toca nas palavras para corrigir acertos e dificuldades. Apenas Confirmar resultado e estrelas registra a rodada no painel e soma as estrelas. Descartar esta rodada não registra resultado. É uma sugestão de transcrição, sem avaliação de pronúncia, diagnóstico ou substituição da observação pedagógica.
 Em Ver rodada, ouça a gravação. Use Guardar áudio neste navegador para conservar no dispositivo, ou Baixar áudio para salvar um arquivo. Sem essa escolha, o áudio é temporário e se perde ao começar outra rodada ou fechar a página. Apagar áudio preserva resultados e estrelas. Há um limite de 60 MB por gravação; se atingido, o áudio fica parcial.
 Áudios guardados usam o armazenamento deste navegador, sem sincronização e sem serem publicados no GitHub. Apagar os dados do navegador também apaga essas gravações. O CSV guarda os resultados e a modalidade de avaliação; ele não inclui os arquivos de áudio.
+
+PRIMEIROS PASSOS — VOGAIS, LETRAS E SÍLABAS
+MISSÃO LEITURA — PRIMEIROS PASSOS
+Prof. Me. J. Araujo.
+
+Uma área para começar antes das missões de palavras e frases.
+
+ATIVIDADES
+1. Vogais: A, E, I, O e U, com imagem, com imagem como dica ou só letras.
+2. Juntar vogais: AI, AU, EI, EU, OI, UI e OU. Exemplo: O + I = OI.
+3. Alfabeto ilustrado: as 26 letras, com exemplos, maiúsculas e minúsculas.
+4. Sílabas simples: famílias como BA, BE, BI, BO e BU.
+5. Sílabas complexas: encontros consonantais, CH, LH, NH, QU, GU e outros grupos.
+6. Formar sílabas: toque nas letras, coloque-as na ordem e confira a junção.
+7. Montar palavras: junte as sílabas para formar BOLA, SAPO, BANANA e outras palavras.
+
+COMO COMEÇAR
+Entre em Primeiros passos, escolha a atividade, informe nome e turma e selecione o grupo. Comece com 5 cartões e aumente conforme a participação da criança. Os cartões podem se repetir em uma rodada maior que o grupo escolhido.
+
+APOIOS AJUSTÁVEIS
+Escolha se a imagem aparece desde o começo, apenas como dica ou fica escondida. Use maiúsculas, minúsculas ou as duas. O modo tranquilo reduz estímulos; letras maiores e ampliação ajudam na projeção. Não há bomba nem contagem regressiva nesta área.
+
+Sons suaves de conquista comemora uma montagem correta ou o acerto registrado pela professora. O som toca uma vez por cartão; conferir repetidamente a mesma montagem não gera novos sons. Desmarque essa opção para praticar em silêncio. Não há buzina de erro.
+
+Ouvir palavra-exemplo usa uma voz em português instalada no dispositivo, se estiver disponível. A professora também pode modelar a leitura em voz alta. Nomes de letras e sons representados pelas letras não são a mesma coisa: contextualize com as palavras. H inicial não tem som próprio; C, G, R, S e X precisam de atenção ao contexto. As cartelas incluem notas para a professora.
+
+VER COMO JUNTAR
+Mostra um modelo das partes, com cores e símbolos para acompanhar a ordem. A pista ou o exemplo falado é registrado como apoio adicional. A criança pode retirar peças e tentar novamente; não perde pontos por isso. Nas palavras com sílabas repetidas, como BA + NA + NA, cada peça pode ser usada uma vez.
+
+REGISTRAR COMO FOI
+Conseguiu sozinho: realizou o cartão sem pedir pista adicional na atividade escolhida.
+Conseguiu com apoio: realizou com mediação, imagem revelada como dica, modelo ou exemplo falado.
+Vamos retomar: fica indicado para novas oportunidades de prática.
+
+Ao encerrar, os cartões avaliados ficam registrados. Uma rodada sem cartões avaliados não cria registro. Em Acompanhar, filtre aluno, turma e atividade, veja os cartões e exporte o CSV. A opção Retomar cartões que pedem apoio prepara novas rodadas a partir das observações mais recentes daquele aluno.
+
+O avanço compara rodadas com os mesmos cartões, grupo, quantidade e apoios. Esse acompanhamento observa a atividade; não é diagnóstico. Não é necessário informar laudo ou CID.
+
+PALAVRAS, FRASES E ESTRELAS
+As descobertas têm acompanhamento próprio. Ler vogais, sílabas e repetir trechos de treino não aumenta a contagem de palavras por minuto nem as estrelas das missões anteriores. As leituras, gravações e conquistas já existentes continuam disponíveis nas suas áreas.
+
+DADOS
+Tudo fica neste navegador e dispositivo. O CSV dos primeiros passos é separado do CSV de leitura. Não há sincronização automática entre endereços ou computadores. Guarde uma cópia dos resultados.
